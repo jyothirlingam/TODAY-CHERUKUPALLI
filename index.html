@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Today Cherukupalli | మన ఊరు మన వార్తలు</title>
+
+  <!-- Telugu Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #d32f2f;
+      --primary-dark: #b71c1c;
+      --bg-color: #f4f7f9;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: "Noto Sans Telugu", sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 480px;
+      padding: 20px 16px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* =========================
+       TOP HEADER
+    ========================== */
+    .top-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 10px;
+    }
+
+    .mini-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .mini-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 4px 10px rgba(211, 47, 47, 0.3);
+    }
+
+    .mini-brand span {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.2;
+    }
+
+    .live-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 6px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-main);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: #e53935;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(229, 57, 53, 0.5); }
+      70% { box-shadow: 0 0 0 6px rgba(229, 57, 53, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(229, 57, 53, 0); }
+    }
+
+    /* =========================
+       HERO SECTION
+    ========================== */
+    .hero {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+      border: 1px solid var(--border-color);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-logo {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      background: rgba(211, 47, 47, 0.1);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+
+    .hero h1 {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .hero .tagline {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .hero-description {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* =========================
+       WEATHER WIDGET
+    ========================== */
+    .weather-widget {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+
+    .weather-icon {
+      font-size: 32px;
+      color: #f59e0b; /* Sun yellow */
+    }
+
+    .weather-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .weather-temp {
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--text-main);
+      line-height: 1;
+    }
+
+    .weather-location {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* =========================
+       SOCIAL LINKS
+    ========================== */
+    .section-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin: 10px 0 5px 5px;
+    }
+
+    .social-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .social-card {
+      text-decoration: none;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      transition: all 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .social-card:active {
+      transform: scale(0.98);
+      background: #f8fafc;
+    }
+
+    .social-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .instagram .social-icon { background: rgba(225, 48, 108, 0.1); color: #e1306c; }
+    .youtube .social-icon { background: rgba(255, 0, 0, 0.1); color: #ff0000; }
+    .whatsapp .social-icon { background: rgba(37, 211, 102, 0.1); color: #25d366; }
+    .contact .social-icon { background: rgba(18, 140, 126, 0.1); color: #128c7e; }
+
+    .social-content { flex: 1; }
+    .social-content strong { display: block; font-size: 15px; font-weight: 800; color: var(--text-main); }
+    .social-content small { display: block; margin-top: 3px; font-size: 12px; color: var(--text-muted); font-weight: 500; }
+    .social-arrow { color: #cbd5e1; font-size: 14px; }
+
+    /* =========================
+       SHARE BUTTON & FOOTER
+    ========================== */
+    .share-btn {
+      width: 100%;
+      border: 1px solid var(--primary);
+      background: var(--primary);
+      color: #fff;
+      padding: 16px;
+      border-radius: 14px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(211, 47, 47, 0.2);
+    }
+    .contact-note {
+      background: #eef2ff;
+      border: 1px dashed #c7d2fe;
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+    }
+    .contact-note i { font-size: 24px; color: #4f46e5; margin-bottom: 10px; }
+    .contact-note strong { display: block; font-size: 14px; font-weight: 800; color: #312e81; margin-bottom: 6px; }
+    .contact-note p { font-size: 12px; color: #4338ca; line-height: 1.6; }
+    .footer { text-align: center; margin-top: 20px; font-size: 12px; color: var(--text-muted); line-height: 1.8; }
+    .footer strong { color: var(--text-main); font-size: 13px; }
+  </style>
+</head>
+
+<body>
+
+<div class="page">
+  
+  <!-- TOP HEADER -->
+  <header class="top-header">
+    <div class="mini-brand">
+      <div class="mini-logo">
+        <i class="fa-solid fa-newspaper"></i>
+      </div>
+      <span>
+        TODAY<br>CHERUKUPALLI
+      </span>
+    </div>
+    <div class="live-badge">
+      <span class="live-dot"></span>
+      LIVE UPDATES
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-logo">
+      <i class="fa-solid fa-tower-broadcast"></i>
+    </div>
+    <h1>TODAY CHERUKUPALLI</h1>
+    <div class="tagline">మన ఊరు • మన వార్తలు • మన గొంతు</div>
+    <div class="hero-description">
+      చెరుకుపల్లిలో జరిగే తాజా వార్తలు, కార్యక్రమాలు, ముఖ్యమైన సమాచారం మరియు స్థానిక విశేషాలను మీ ముందుకు తీసుకువచ్చే మన స్థానిక మీడియా వేదిక.
+    </div>
+  </section>
+
+  <!-- WEATHER WIDGET -->
+  <div class="weather-widget">
+    <div class="weather-icon">
+      <i class="fa-solid fa-cloud-sun" id="weather-icon"></i>
+    </div>
+    <div class="weather-info">
+      <span class="weather-temp" id="temp-display">--°C</span>
+      <span class="weather-location">చెరుకుపల్లి వాతావరణం</span>
+    </div>
+  </div>
+
+  <!-- SOCIAL LINKS TITLE -->
+  <div class="section-title">
+    📲 మా సోషల్ మీడియాను Follow చేయండి
+  </div>
+
+  <!-- SOCIAL BUTTONS -->
+  <div class="social-list">
+    <a class="social-card instagram" href="https://www.instagram.com/today_cherukupalli/" target="_blank" rel="noopener noreferrer">
+      <div class="social-icon"><i class="fa-brands fa-instagram"></i></div>
+      <div class="social-content"><strong>Instagram</strong><small>తాజా Photos & Reels చూడండి</small></div>
+      <div class="social-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+    </a>
+    <a class="social-card youtube" href="https://youtube.com/@avbhakthi?si=K15sD0ztRIO46dWa" target="_blank" rel="noopener noreferrer">
+      <div class="social-icon"><i class="fa-brands fa-youtube"></i></div>
+      <div class="social-content"><strong>YouTube</strong><small>News & Videos కోసం Subscribe చేయండి</small></div>
+      <div class="social-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+    </a>
+    <a class="social-card whatsapp" href="https://whatsapp.com/channel/0029VbD6GV06rsR0uesbhY2X" target="_blank" rel="noopener noreferrer">
+      <div class="social-icon"><i class="fa-brands fa-whatsapp"></i></div>
+      <div class="social-content"><strong>WhatsApp Channel</strong><small>తాజా Updates వెంటనే పొందండి</small></div>
+      <div class="social-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+    </a>
+    <a class="social-card contact" href="https://wa.me/916303585865" target="_blank" rel="noopener noreferrer">
+      <div class="social-icon"><i class="fa-brands fa-whatsapp"></i></div>
+      <div class="social-content"><strong>Contact Us</strong><small>వార్తలు / సమాచారం మాతో పంచుకోండి</small></div>
+      <div class="social-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+    </a>
+  </div>
+
+  <!-- SHARE BUTTON -->
+  <button class="share-btn" onclick="sharePage()">
+    <i class="fa-solid fa-share-nodes"></i>
+    ఈ పేజీని మీ స్నేహితులకు Share చేయండి
+  </button>
+
+  <!-- CONTACT NOTE -->
+  <div class="contact-note">
+    <i class="fa-solid fa-paper-plane"></i>
+    <strong>మీ దగ్గర వార్త ఉందా?</strong>
+    <p>చెరుకుపల్లిలో జరిగే ముఖ్యమైన కార్యక్రమాలు, వార్తలు, ఫోటోలు లేదా వీడియోలను మాతో పంచుకోండి. మా Contact Us ద్వారా WhatsAppలో పంపండి.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <strong>TODAY CHERUKUPALLI</strong><br>
+    మన ఊరు • మన వార్తలు • మన గొంతు<br><br>
+    © <span id="year"></span> Today Cherukupalli
+  </footer>
+
+</div>
+
+<script>
+  // CURRENT YEAR
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // SHARE PAGE
+  async function sharePage() {
+    const shareData = {
+      title: "TODAY CHERUKUPALLI",
+      text: "చెరుకుపల్లి తాజా వార్తలు మరియు స్థానిక సమాచారం కోసం TODAY CHERUKUPALLIని Follow చేయండి.",
+      url: window.location.href
+    };
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        await navigator.clipboard.writeText(window.location.href);
+        alert("పేజీ లింక్ Copy అయింది. ఇప్పుడు WhatsAppలో Share చేయండి.");
+      }
+    } catch (error) {
+      console.log("Share cancelled", error);
+    }
+  }
+
+  // FETCH WEATHER DATA
+  async function getCherukupalliWeather() {
+    try {
+      // Coordinates for Cherukupalli
+      const lat = 16.03;
+      const lon = 80.66;
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
+      
+      const response = await fetch(url);
+      const data = await response.json();
+      
+      if(data && data.current_weather) {
+        const temp = Math.round(data.current_weather.temperature);
+        document.getElementById("temp-display").textContent = temp + "°C";
+      }
+    } catch (error) {
+      console.error("వాతావరణ సమాచారం పొందడంలో లోపం:", error);
+      document.getElementById("temp-display").textContent = "--°C";
+    }
+  }
+
+  // వాతావరణ ఫంక్షన్ ని కాల్ చేయడం
+  getCherukupalliWeather();
+
+</script>
+
+</body>
+</html>
